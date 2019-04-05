@@ -10,30 +10,47 @@ import java.sql.Date;
 
 public class Parametrs {
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name= "increment", strategy= "increment")
-    @Column(name = "id", length = 6, nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, updatable = false)
     private long id;
 
+    @Basic
     @Column(name = "date")
     private Date date;
 
+    @Basic
     @Column(name = "height")
     private int height;
 
+    @Basic
     @Column(name = "weight")
     private int weight;
 
+    @Basic
     @Column(name = "age")
     private int age;
 
+    @Basic
     @Column(name = "gender")
     private char gender;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "user_id", nullable = false)
+    private Users user;
 
-    private Users users;
+    public  Parametrs(long id, Date date, int height, int weight, int age, char gender, Users user){
+        this.id = id;
+        this.date =date;
+        this.height= height;
+        this.weight = weight;
+        this.age = age;
+        this.gender = gender;
+        this.user = user;
+
+    }
+    public  Parametrs(){
+
+    }
 
     public long getId() {
         return id;

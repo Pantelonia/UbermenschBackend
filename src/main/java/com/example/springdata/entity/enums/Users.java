@@ -1,32 +1,44 @@
 package com.example.springdata.entity.enums;
-import org.hibernate.annotations.GenericGenerator;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "users")
 
 public class Users {
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name= "increment", strategy= "increment")
-    @Column(name = "id", length = 6, nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, updatable = false)
     private long id;
 
+    @Basic
     @Column(name = "login")
     private String login;
 
+    @Basic
     @Column(name = "password")
     private String password;
 
+    @Basic
     @Column(name = "email")
     private String email;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "users")
+    @JsonIgnore
     private Set<Parametrs> parametr;
 
+    public Users(){
+
+    }
+    public Users(long id, String login, String password, String email){
+        this.id= id;
+        this.login = login;
+        this.password = password;
+        this.email = email;
+    }
 
 
 

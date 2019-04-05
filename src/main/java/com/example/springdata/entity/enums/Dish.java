@@ -1,32 +1,59 @@
 package com.example.springdata.entity.enums;
 
-import org.hibernate.annotations.GenericGenerator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
 @Entity
-
-@Table(name = "dish")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Dish {
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name= "increment", strategy= "increment")
-    @Column(name = "id", length = 6, nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", length = 6, nullable = false, updatable = false)
     private long id;
-    @Column(name = "name")
+
+    @Basic
+    @Column(name = "name", nullable = false, unique = true)
     private String name;
+
+    @Basic
     @Column(name = "kkal")
     private int kkal;
+
+    @Basic
     @Column(name = "protein")
     private int protein;
+
+    @Basic
     @Column(name = "carbohydrates")
     private int carbohydrates;
+
+    @Basic
     @Column(name = "fat")
     private int fat;
+
+    @Basic
     @Column(name = "description")
     private String description;
+
+    @Basic
     @Column(name = "type_dish")
     private String type_dish;
+
+    public Dish(){}
+    public Dish(Long id, String name, int kkal, int protein, int carbohydrates, int fat, String description, String type_dish){
+        this.id = id;
+        this.name = name;
+        this.kkal = kkal;
+        this.protein =protein;
+        this.carbohydrates = carbohydrates;
+        this.fat = fat;
+        this.description =description;
+        this.type_dish = type_dish;
+
+    }
+
+
 
     public long getId() {
         return id;
