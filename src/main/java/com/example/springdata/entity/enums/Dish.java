@@ -1,8 +1,10 @@
 package com.example.springdata.entity.enums;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -39,6 +41,26 @@ public class Dish {
     @Basic
     @Column(name = "type_dish")
     private String type_dish;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "breackfast")
+    @JsonIgnore
+    private Collection<DaillyMenu> breackfast;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "snack")
+    @JsonIgnore
+    private Collection<DaillyMenu> snack;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "lunch")
+    @JsonIgnore
+    private Collection<DaillyMenu> lunch;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "secondSnack")
+    @JsonIgnore
+    private Collection<DaillyMenu> secondSnack;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "diner")
+    @JsonIgnore
+    private Collection<DaillyMenu> diner;
 
     public Dish(){}
     public Dish(Long id, String name, int kkal, int protein, int carbohydrates, int fat, String description, String type_dish){

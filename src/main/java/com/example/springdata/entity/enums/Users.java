@@ -4,9 +4,11 @@ package com.example.springdata.entity.enums;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Set;
 
 @Entity
+
 
 public class Users {
     @Id
@@ -28,7 +30,7 @@ public class Users {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "users")
     @JsonIgnore
-    private Set<Parametrs> parametr;
+    private Collection<Parametrs> parametr;
 
     public Users(){
 
@@ -74,7 +76,11 @@ public class Users {
         this.email = email;
     }
 
-    public Set<Parametrs> getParametr() {
+    public Collection<Parametrs> getParametr() {
         return parametr;
+    }
+
+    public void setParametr(Collection<Parametrs> parametr) {
+        this.parametr = parametr;
     }
 }
