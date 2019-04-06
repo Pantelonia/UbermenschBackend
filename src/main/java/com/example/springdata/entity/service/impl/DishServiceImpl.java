@@ -14,7 +14,7 @@ public class DishServiceImpl  {
     private DishRepository dishRepository;
     //    @Override
     public Dish addDish(Dish dish){
-        Dish savedDish = dishRepository.saveAndFlush( dish);
+        Dish savedDish = dishRepository.save( dish);
         return  savedDish;
     }
 
@@ -27,12 +27,12 @@ public class DishServiceImpl  {
     }
 
     public Dish editUsers(Dish users) {
-        return dishRepository.saveAndFlush(users);
+        return dishRepository.save(users);
     }
 
 
 
-    public List<Dish> getAll() {
+    public Iterable<Dish> getAll() {
         return dishRepository.findAll();
     }
 
