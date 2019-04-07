@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 public interface DishRepository  extends CrudRepository<Dish, Long> {
     Dish findByName(String name);
-    Dish findAllByType_dish(String type_dish);
 
 
 }

@@ -14,42 +14,56 @@ public class DaillyManuService {
     @Autowired
     private DishRepository dishRepository;
 
-//    public Dish getBreackfast(long id){
-//        DaillyMenu menu = daillyMenuRepository.findById(id).get();
-//        Dish dish = menu.getBreackfast();
-//        return dish;
-//
-//    }
-//    public Dish getSnack(long id){
-//        DaillyMenu menu = daillyMenuRepository.findById(id).get();
-//        Dish dish = menu.getSnack();
-//        return dish;
-//
-//    }
-//    public Dish getLuch(long id){
-//        DaillyMenu menu = daillyMenuRepository.findById(id).get();
-//        Dish dish = menu.getLunch();
-//        return dish;
-//
-//    }
-//    public Dish getSecondSnack(long id){
-//        DaillyMenu menu = daillyMenuRepository.findById(id).get();
-//        Dish dish = menu.getSecondSnack();
-//        return dish;
-//
-//    }
-//    public Dish getDiner(long id){
-//        DaillyMenu menu = daillyMenuRepository.findById(id).get();
-//        Dish dish = menu.getDiner();
-//        return dish;
-//
-//    }
-//    public int TotalKKalDay(long id){
-//        DaillyMenu menu = daillyMenuRepository.findById(id).get();
-//
-//        int total = menu.getBreackfast().getKkal()+menu.getSnack().getKkal()+menu.getLunch().getKkal()+menu.getSecondSnack().getKkal()+ menu.getDiner().getKkal();
-//        return total;
-//
-//    }
+
+    public Iterable<Dish> getBreackfast(long id){
+        DaillyMenu menu = daillyMenuRepository.findById(id).get();
+        return  menu.getBreackfast();
+
+    }
+
+    public Iterable<Dish> getSnack(long id){
+        DaillyMenu menu = daillyMenuRepository.findById(id).get();
+        return menu.getSnack();
+
+    }
+    public Iterable<Dish> getLuch(long id){
+        DaillyMenu menu = daillyMenuRepository.findById(id).get();
+        return menu.getLunch();
+
+    }
+    public Iterable<Dish> getSecondSnack(long id){
+        DaillyMenu menu = daillyMenuRepository.findById(id).get();
+        return menu.getSecondSnack();
+
+    }
+    public Iterable<Dish> getDiner(long id){
+        DaillyMenu menu = daillyMenuRepository.findById(id).get();
+        return menu.getDiner();
+
+    }
+    public int TotalKKalDay(long id){
+        DaillyMenu menu = daillyMenuRepository.findById(id).get();
+
+        int total = 0;
+
+        for (Dish dish : menu.getBreackfast()){
+            total = total + dish.getKkal();
+        }
+        for (Dish dish:menu.getSnack()     ) {
+            total = total + dish.getKkal();
+        }
+
+        for (Dish dish : menu.getLunch()){
+            total = total + dish.getKkal();
+        }
+        for (Dish dish : menu.getSecondSnack()){
+            total = total + dish.getKkal();
+        }
+        for (Dish dish : menu.getDiner()){
+            total = total + dish.getKkal();
+        }
+        return total;
+
+    }
 
 }

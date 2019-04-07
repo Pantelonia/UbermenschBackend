@@ -42,6 +42,13 @@ public class UsersServiceImpl {
 
     }
 
+    public Users changePassword(long id, String password){
+        Users user = getUser(id);
+        user.setPassword(password);
+        return  usersRepository.save(user);
+
+    }
+
     public double dailyRate(long id) {
         double result;
         Users curruser = usersRepository.findById(id).get();

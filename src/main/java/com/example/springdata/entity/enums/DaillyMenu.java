@@ -1,8 +1,6 @@
 package com.example.springdata.entity.enums;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 
 import javax.persistence.*;
@@ -21,30 +19,29 @@ public class DaillyMenu {
     @Column(name = "day")
     private String day;
 
-    @ManyToOne( fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "breackfast", nullable = false)
-    private Dish breackfast;
-
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "snack", nullable = false)
-    private Dish snack;
-
-
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "lunch", nullable = false)
-    private Dish lunch;
-
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "secondSnack", nullable = false)
-    private Dish secondSnack;
-
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "diner", nullable = false)
-    private Dish diner;
-
     @ManyToOne(fetch = FetchType.LAZY, cascade ={CascadeType.MERGE, CascadeType.PERSIST} )
     @JoinColumn(name = "week_id", referencedColumnName = "id", nullable = false)
     private WeeklyDiet week;
+
+    @OneToMany(mappedBy = "breackfast")
+    @JsonIgnore
+    private Collection<Dish> breackfast;
+
+    @OneToMany( mappedBy = "snack")
+    @JsonIgnore
+    private Collection<Dish> snack;
+
+    @OneToMany(mappedBy = "lunch")
+    @JsonIgnore
+    private Collection<Dish> lunch;
+
+    @OneToMany(mappedBy = "secondSnack")
+    @JsonIgnore
+    private Collection<Dish> secondSnack;
+
+    @OneToMany( mappedBy = "diner")
+    @JsonIgnore
+    private Collection<Dish> diner;
 
 
 
@@ -52,23 +49,23 @@ public class DaillyMenu {
         return id;
     }
 
-    public Dish getBreackfast() {
+    public Collection<Dish> getBreackfast() {
         return breackfast;
     }
 
-    public Dish getSnack() {
+    public Collection<Dish> getSnack() {
         return snack;
     }
 
-    public Dish getLunch() {
+    public Collection<Dish> getLunch() {
         return lunch;
     }
 
-    public Dish getSecondSnack() {
+    public Collection<Dish> getSecondSnack() {
         return secondSnack;
     }
 
-    public Dish getDiner() {
+    public Collection<Dish> getDiner() {
         return diner;
     }
 
@@ -76,28 +73,36 @@ public class DaillyMenu {
         return day;
     }
 
+    public WeeklyDiet getWeek() {
+        return week;
+    }
+
     public void setId(long id) {
         this.id = id;
     }
 
-    public void setBreackfast(Dish breackfast) {
+    public void setBreackfast(Collection<Dish> breackfast) {
         this.breackfast = breackfast;
     }
 
-    public void setSnack(Dish snack) {
+    public void setSnack(Collection<Dish> snack) {
         this.snack = snack;
     }
 
-    public void setLunch(Dish lunch) {
+    public void setLunch(Collection<Dish> lunch) {
         this.lunch = lunch;
     }
 
-    public void setSecondSnack(Dish secondSnack) {
+    public void setSecondSnack(Collection<Dish> secondSnack) {
         this.secondSnack = secondSnack;
     }
 
-    public void setDiner(Dish diner) {
+    public void setDiner(Collection<Dish> diner) {
         this.diner = diner;
+    }
+
+    public void setWeek(WeeklyDiet week) {
+        this.week = week;
     }
 
     public void setDay(String day) {

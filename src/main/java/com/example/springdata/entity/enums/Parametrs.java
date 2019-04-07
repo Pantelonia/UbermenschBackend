@@ -35,7 +35,7 @@ public class Parametrs {
     private char gender;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private Users users;
 
     public  Parametrs(long id, Date date, int height, int weight, int age, char gender, Users user){
@@ -98,5 +98,13 @@ public class Parametrs {
 
     public void setWeight(int weight) {
         this.weight = weight;
+    }
+
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
     }
 }
