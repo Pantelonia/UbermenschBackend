@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "parametrs")
@@ -15,8 +16,8 @@ public class Parametrs {
     private long id;
 
     @Basic
-    @Column(name = "date")
-    private Date date;
+    @Column(name = "date",  nullable = false, updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private Timestamp date;
 
     @Basic
     @Column(name = "height")
@@ -38,9 +39,8 @@ public class Parametrs {
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private Users users;
 
-    public  Parametrs(long id, Date date, int height, int weight, int age, char gender, Users user){
+    public  Parametrs(long id, int height, int weight, int age, char gender, Users user){
         this.id = id;
-        this.date =date;
         this.height= height;
         this.weight = weight;
         this.age = age;
@@ -60,13 +60,7 @@ public class Parametrs {
         this.id = id;
     }
 
-    public Date getDate() {
-        return date;
-    }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
 
     public int getAge() {
         return age;
@@ -106,5 +100,13 @@ public class Parametrs {
 
     public void setUsers(Users users) {
         this.users = users;
+    }
+
+    public Timestamp getDate() {
+        return date;
+    }
+
+    public void setDate(Timestamp date) {
+        this.date = date;
     }
 }

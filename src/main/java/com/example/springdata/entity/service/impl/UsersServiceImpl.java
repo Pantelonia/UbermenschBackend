@@ -35,6 +35,8 @@ public class UsersServiceImpl {
         return usersRepository.findByLogin(login);
     }
 
+    public  Users getByEmail(String email) { return  usersRepository.findByEmail(email);}
+
 
     public Users changeEmail(long id, String email) {
         Users user = getUser(id);

@@ -18,6 +18,12 @@ public class UsersController {
     @GetMapping("/users/{id}")
     Users getUser(@PathVariable Long id){return  service.getUser(id);}
 
+    @GetMapping(value = "/users/", params = "login")
+    Users getUserByLogin(@RequestParam String login){ return  service.getByLogin(login);}
+
+    @GetMapping(value = "/users/", params = "email")
+    Users getUserByEmail(@RequestParam String email){return  service.getByEmail(email);}
+
     @GetMapping("/users/{id}/dailyRate")
     double getdailyRate(@PathVariable Long id){ return service.dailyRate(id);}
 
@@ -25,7 +31,7 @@ public class UsersController {
 
     @PostMapping(value = "/users", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
-    Users AddVisitor(@RequestBody Users user) {
+    Users addUsers(@RequestBody Users user) {
         return service.addUsers(user);
     }
 

@@ -17,7 +17,7 @@ public class Users {
     private long id;
 
     @Basic
-    @Column(name = "login")
+    @Column(name = "login", unique = true)
     private String login;
 
     @Basic

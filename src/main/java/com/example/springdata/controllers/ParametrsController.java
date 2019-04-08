@@ -23,6 +23,11 @@ public class ParametrsController {
         return service.getAll();
     }
 
+    @GetMapping("/parametrs/{id}/last")
+    Parametrs getLast(@PathVariable long id){
+        System.out.println(id);
+        return service.getLastParametrs(id);}
+
 
 
     @PostMapping(value = "/parametrs/{user_id}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
