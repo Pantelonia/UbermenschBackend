@@ -30,6 +30,10 @@ public class WeeklyDiet {
 
     @OneToMany(mappedBy = "week")
     @JsonIgnore
-    private Collection<DaillyMenu> daillyMenus;
+    private Collection<DaillyMenuWeekRateInstance> daillyMenuWeekRateInstances;
+
+    @OneToMany(mappedBy = "week")
+    @JsonIgnore
+    private Collection<UserWeekInstance> userWeekInstances;
 
 }

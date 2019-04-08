@@ -6,8 +6,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import java.util.Collection;
 
-@Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Entity
 public class Dish {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,19 +20,19 @@ public class Dish {
 
     @Basic
     @Column(name = "kkal")
-    private int kkal;
+    private float kkal;
 
     @Basic
     @Column(name = "protein")
-    private int protein;
+    private float protein;
 
     @Basic
     @Column(name = "carbohydrates")
-    private int carbohydrates;
+    private float carbohydrates;
 
     @Basic
     @Column(name = "fat")
-    private int fat;
+    private float fat;
 
     @Basic
     @Column(name = "description")
@@ -43,41 +43,23 @@ public class Dish {
     private String type_dish;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "breackfast_id" , referencedColumnName = "id", nullable = false)
-    private DaillyMenu breackfast;
+    @JoinColumn(name = "meal",  referencedColumnName = "id", nullable = false)
+    private Meal meal;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "snack", nullable = false)
-    private DaillyMenu snack;
+    public Dish() {
+    }
 
-
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "lunch", nullable = false)
-    private DaillyMenu lunch;
-
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "secondSnack", nullable = false)
-    private DaillyMenu secondSnack;
-
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "diner", nullable = false)
-    private DaillyMenu diner;
-
-
-
-    public Dish(){}
-    public Dish(Long id, String name, int kkal, int protein, int carbohydrates, int fat, String description, String type_dish){
+    public Dish(Long id, String name, float kkal, float protein, float carbohydrates, float fat, String description, String type_dish) {
         this.id = id;
         this.name = name;
         this.kkal = kkal;
-        this.protein =protein;
+        this.protein = protein;
         this.carbohydrates = carbohydrates;
         this.fat = fat;
-        this.description =description;
+        this.description = description;
         this.type_dish = type_dish;
 
     }
-
 
 
     public long getId() {
@@ -96,35 +78,35 @@ public class Dish {
         this.name = name;
     }
 
-    public int getKkal() {
+    public float getKkal() {
         return kkal;
     }
 
-    public void setKkal(int kkal) {
+    public void setKkal(float kkal) {
         this.kkal = kkal;
     }
 
-    public int getCarbohydrates() {
+    public float getCarbohydrates() {
         return carbohydrates;
     }
 
-    public void setCarbohydrates(int carbohydrates) {
+    public void setCarbohydrates(float carbohydrates) {
         this.carbohydrates = carbohydrates;
     }
 
-    public int getFat() {
+    public float getFat() {
         return fat;
     }
 
-    public void setFat(int fat) {
+    public void setFat(float fat) {
         this.fat = fat;
     }
 
-    public int getProtein() {
+    public float getProtein() {
         return protein;
     }
 
-    public void setProtein(int protein) {
+    public void setProtein(float protein) {
         this.protein = protein;
     }
 
@@ -144,43 +126,11 @@ public class Dish {
         this.type_dish = type_dish;
     }
 
-    public void setDiner(DaillyMenu diner) {
-        this.diner = diner;
+    public Meal getMeal() {
+        return meal;
     }
 
-    public void setSecondSnack(DaillyMenu secondSnack) {
-        this.secondSnack = secondSnack;
-    }
-
-    public void setLunch(DaillyMenu lunch) {
-        this.lunch = lunch;
-    }
-
-    public void setSnack(DaillyMenu snack) {
-        this.snack = snack;
-    }
-
-    public void setBreackfast(DaillyMenu breackfast) {
-        this.breackfast = breackfast;
-    }
-
-    public DaillyMenu getBreackfast() {
-        return breackfast;
-    }
-
-    public DaillyMenu getDiner() {
-        return diner;
-    }
-
-    public DaillyMenu getLunch() {
-        return lunch;
-    }
-
-    public DaillyMenu getSecondSnack() {
-        return secondSnack;
-    }
-
-    public DaillyMenu getSnack() {
-        return snack;
+    public void setMeal(Meal meal) {
+        this.meal = meal;
     }
 }

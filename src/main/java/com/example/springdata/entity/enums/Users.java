@@ -32,6 +32,10 @@ public class Users {
     @JsonIgnore
     private Collection<Parametrs> parametr;
 
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private Collection<UserWeekInstance> userWeekInstances;
+
     public Users(){
 
     }

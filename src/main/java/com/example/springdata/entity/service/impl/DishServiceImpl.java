@@ -9,13 +9,16 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class DishServiceImpl  {
+public class DishServiceImpl {
     @Autowired
     private DishRepository dishRepository;
-    //    @Override
-    public Dish addDish(Dish dish){
-        Dish savedDish = dishRepository.save( dish);
-        return  savedDish;
+
+    public Dish getDish(long id) {
+        return dishRepository.findById(id).get();
+    }
+
+    public Dish addDish(Dish dish) {
+        return dishRepository.save(dish);
     }
 
     public void delete(long id) {
@@ -31,11 +34,9 @@ public class DishServiceImpl  {
     }
 
 
-
     public Iterable<Dish> getAll() {
         return dishRepository.findAll();
     }
-
 
 
 }

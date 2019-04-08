@@ -21,7 +21,8 @@ public class UsersServiceImpl {
         Users savedUsers = usersRepository.save(users);
         return savedUsers;
     }
-    public Users getUser(long id){
+
+    public Users getUser(long id) {
         Users user = usersRepository.findById(id).get();
         return user;
     }
@@ -35,17 +36,17 @@ public class UsersServiceImpl {
     }
 
 
-    public Users changeEmail(long id, String email){
+    public Users changeEmail(long id, String email) {
         Users user = getUser(id);
         user.setEmail(email);
-        return  usersRepository.save(user);
+        return usersRepository.save(user);
 
     }
 
-    public Users changePassword(long id, String password){
+    public Users changePassword(long id, String password) {
         Users user = getUser(id);
         user.setPassword(password);
-        return  usersRepository.save(user);
+        return usersRepository.save(user);
 
     }
 
