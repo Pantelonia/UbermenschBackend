@@ -19,16 +19,14 @@ public class UserWeekInstance {
     @JoinColumn(name = "week_id", referencedColumnName = "id", nullable = false, updatable = false)
     private WeeklyDiet week;
 
+    @Basic
+    @Column(name = "active",  nullable = false, updatable = false, insertable = false, columnDefinition = "boolean default false")
+    private  Boolean active;
 
-
-
-    public Users getUser() {
-        return user;
+    public UserWeekInstance() {
     }
 
-    public void setUser(Users user) {
-        this.user = user;
-    }
+
 
     public Long getId() {
         return id;
@@ -44,5 +42,21 @@ public class UserWeekInstance {
 
     public void setWeek(WeeklyDiet week) {
         this.week = week;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
     }
 }

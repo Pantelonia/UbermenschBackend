@@ -21,16 +21,15 @@ public class ParametrsService {
     public Iterable<Parametrs> getAll(){return parametrsRepository.findAll();}
 
     public Parametrs getLastParametrs(long id){
-        System.out.println(id);
         Users user = usersRepository.findById(id).get();
-        System.out.println(user.getLogin());
         ArrayList<Parametrs> parametrs = (ArrayList<Parametrs>) parametrsRepository.findByUsersOrderByIdDesc(user);
-        System.out.println(parametrs.get(0).getWeight());
         return parametrs.get(0);}
 
 
     public Parametrs addParametrs(Parametrs users) {
         Parametrs sevedParametrs = parametrsRepository.save(users);
-        return sevedParametrs;
+        Parametrs newparametrs =  parametrsRepository.findById(sevedParametrs.getId()).get();
+        System.out.println("Param service test - " + newparametrs.getDate());
+        return newparametrs;
     }
 }

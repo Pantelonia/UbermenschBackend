@@ -1,6 +1,9 @@
 package com.example.springdata.entity.enums;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Table(name ="dailly_menu_week_rate_instance")
@@ -18,6 +21,10 @@ public class DaillyMenuWeekRateInstance {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "week_id", referencedColumnName = "id", nullable = false, updatable = false)
     private WeeklyDiet week;
+
+
+
+
 
     public Long getId() {
         return id;

@@ -23,6 +23,7 @@ public class UsersServiceImpl {
     }
 
     public Users getUser(long id) {
+        System.out.println("test User service impl - " + id);
         Users user = usersRepository.findById(id).get();
         return user;
     }
