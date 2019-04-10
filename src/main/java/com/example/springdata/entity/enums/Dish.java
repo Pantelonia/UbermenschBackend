@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import java.util.Collection;
 
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 public class Dish {
     @Id
@@ -42,9 +41,11 @@ public class Dish {
     @Column(name = "type_dish")
     private String type_dish;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "meal",  referencedColumnName = "id", nullable = false)
-    private Meal meal;
+    @OneToMany(mappedBy = "dish")
+    @JsonIgnore
+    private Collection<CollectMeal> collectMeals;
+
+
 
     public Dish() {
     }
@@ -126,11 +127,4 @@ public class Dish {
         this.type_dish = type_dish;
     }
 
-    public Meal getMeal() {
-        return meal;
-    }
-
-    public void setMeal(Meal meal) {
-        this.meal = meal;
-    }
 }

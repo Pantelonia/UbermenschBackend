@@ -22,6 +22,11 @@ public class MyProgrammController {
     @GetMapping("/MyProgramm/{id}")
     Iterable<WeeklyDiet> getAllUsersProgram(@PathVariable long id){ return userWeekService.getAllUsersProgramm(id);}
 
+    @GetMapping("/MyProgramm/check/{id_user}/{id_week}")
+    UserWeekInstance getUserWeek(@PathVariable long id_user, @PathVariable long id_week){
+        return  userWeekService.getUserWeek(id_user, id_week);
+    }
+
     @GetMapping("/Programm")
     Iterable<WeeklyDiet> getAllProgram(){return weeklyDietRepository.findAll();}
 

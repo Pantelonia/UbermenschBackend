@@ -17,13 +17,13 @@ public class DaillyManuService {
 
 
 
-    public Iterable<Dish> gettAllDishBreakfast(long id){
-
-        DaillyMenu menu = daillyMenuRepository.findById(id).get();
-        Meal meal = menu.getBreakfast();
-        Iterable<Dish> dishes = meal.getDish();
-        return dishes;
-    }
+//    public Iterable<Dish> gettAllDishBreakfast(long id){
+//
+//        DaillyMenu menu = daillyMenuRepository.findById(id).get();
+//        Meal meal = menu.getBreakfast();
+//        Iterable<Dish> dishes = meal.getDish();
+//        return dishes;
+//    }
 
 
 

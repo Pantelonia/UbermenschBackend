@@ -22,9 +22,22 @@ public class DaillyMenu {
 
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "breakfast_id", referencedColumnName = "id", nullable = false)
-    private Meal breakfast;
+
+    @OneToMany(mappedBy = "menu")
+    @JsonIgnore
+    private Collection<DaillyMenuWeekRateInstance> daillyMenuWeekRateInstances;
+
+    @OneToMany(mappedBy = "menu" )
+    @JsonIgnore
+    private Collection<Meal> meals;
+
+    public  DaillyMenu(){
+
+    }
+    public DaillyMenu(String day, Collection<Meal> meals) {
+        this.day = day;
+    }
+
 
 //    @OneToMany(mappedBy = "breakfast" )
 //    private Collection<Meal> breakfast;
@@ -60,24 +73,25 @@ public class DaillyMenu {
     }
 
 
-    public String getDay() {
-        return day;
-    }
-
-
-    public void setDay(String day) {
-        this.day = day;
-    }
 
     public void setId(long id) {
         this.id = id;
     }
 
-    public Meal getBreakfast() {
-        return breakfast;
+
+    public String getDay() {
+        return day;
     }
 
-    public void setBreakfast(Meal breakfast) {
-        this.breakfast = breakfast;
+    public void setDay(String day) {
+        this.day = day;
+    }
+
+    public Collection<Meal> getMeals() {
+        return meals;
+    }
+
+    public void setMeals(Collection<Meal> meals) {
+        this.meals = meals;
     }
 }

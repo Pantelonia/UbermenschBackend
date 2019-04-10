@@ -35,11 +35,10 @@ public class DishController {
     }
 
 
-    @PostMapping(value = "/dish/add/{id}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @PostMapping(value = "/dish/add/", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
-    Dish addDish(@RequestBody Dish dish, @PathVariable long id) {
-        Meal meal =  mealService.getMeal(id);
-        dish.setMeal(meal);
+    Dish addDish(@RequestBody Dish dish) {
+
         return service.addDish(dish);
     }
 }

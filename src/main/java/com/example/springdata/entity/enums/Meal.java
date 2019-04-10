@@ -1,7 +1,6 @@
 package com.example.springdata.entity.enums;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.ManyToAny;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -15,14 +14,15 @@ public class Meal {
     private long id;
 
 
-    @OneToMany(mappedBy = "breakfast" )
-    @JsonIgnore
-    private Collection<DaillyMenu> breakfasts;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "menu_id", referencedColumnName = "id", nullable = false)
+    private DaillyMenu menu;
+
 
 
     @OneToMany(mappedBy = "meal")
     @JsonIgnore
-    private Collection<Dish> dish;
+    private Collection<CollectMeal> collectMeals;
 
     public Long getId() {
         return id;
@@ -31,14 +31,31 @@ public class Meal {
     public void setId(Long id) {
         this.id = id;
     }
+    public Meal(){
 
+    }
+    public Meal(DaillyMenu menu){
 
-    public Collection<Dish> getDish() {
-        return dish;
+        this.menu = menu;
     }
 
-    public void setDish(Collection<Dish> dish) {
-        this.dish = dish;
+
+
+
+    public Collection<CollectMeal> getCollectMeals() {
+        return collectMeals;
+    }
+
+    public void setCollectMeals(Collection<CollectMeal> collectMeals) {
+        this.collectMeals = collectMeals;
+    }
+
+    public DaillyMenu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(DaillyMenu menu) {
+        this.menu = menu;
     }
 }
 

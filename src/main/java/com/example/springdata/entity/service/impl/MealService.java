@@ -21,10 +21,10 @@ public class MealService {
         return mealRepository.findById(id).get();
     }
 
-    public Iterable<Dish> getAllDish(long id) {
-        Meal meal = mealRepository.findById(id).get();
-        return meal.getDish();
-    }
+//    public Iterable<Dish> getAllDish(long id) {
+//        Meal meal = mealRepository.findById(id).get();
+//        return meal.getDish();
+//    }
 
 
     public Meal addMeal(Meal meal) {

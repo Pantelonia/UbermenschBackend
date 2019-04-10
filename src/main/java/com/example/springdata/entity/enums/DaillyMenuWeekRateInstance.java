@@ -23,6 +23,9 @@ public class DaillyMenuWeekRateInstance {
     private WeeklyDiet week;
 
 
+    @Basic
+    @Column(name = "number", unique = true)
+    private int number;
 
 
 
@@ -40,6 +43,16 @@ public class DaillyMenuWeekRateInstance {
 
     public void setMenu(DaillyMenu menu) {
         this.menu = menu;
+
+    }
+    public DaillyMenuWeekRateInstance(){
+
+    }
+    public DaillyMenuWeekRateInstance(int number, DaillyMenu menu, WeeklyDiet week){
+        this.menu = menu;
+
+        this.number = number;
+        this.week = week;
     }
 
 
@@ -49,5 +62,13 @@ public class DaillyMenuWeekRateInstance {
 
     public void setWeek(WeeklyDiet week) {
         this.week = week;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
     }
 }

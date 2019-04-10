@@ -10,5 +10,6 @@ import org.springframework.stereotype.Service;
 @Repository
 public interface UserWeekRepository extends CrudRepository<UserWeekInstance, Long> {
     Iterable<UserWeekInstance> findAllByUser(Users users);
+    UserWeekInstance findByUserAndWeek(Users user, WeeklyDiet week);
 
 }
