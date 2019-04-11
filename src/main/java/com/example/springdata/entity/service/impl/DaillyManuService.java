@@ -18,10 +18,9 @@ public class DaillyManuService {
     private DishRepository dishRepository;
 
 
-    public ArrayList<Meal> getAllDaysMeal(long id){
-        ArrayList<Meal> meals = new ArrayList<>();
+    public Iterable<Meal> getAllDaysMeal(long id){
         DaillyMenu day = daillyMenuRepository.findById(id).get();
-        meals =(ArrayList<Meal>) day.getMeals();
+        Iterable<Meal> meals = day.getMeals();
         return meals;
 
     }
