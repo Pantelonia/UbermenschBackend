@@ -23,6 +23,9 @@ public class MealController {
     @GetMapping("/meal")
     Iterable<Meal> getAll(){return service.getAll();}
 
+    @GetMapping("/meal/{meal_id}")
+    Meal getMeal(@PathVariable long meal_id){return service.getMeal(meal_id);}
+
 
     @PostMapping(value = "/meal/add/{menu_id}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
