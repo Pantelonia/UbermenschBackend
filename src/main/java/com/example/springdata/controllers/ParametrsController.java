@@ -2,7 +2,6 @@ package com.example.springdata.controllers;
 
 import com.example.springdata.entity.enums.Parametrs;
 import com.example.springdata.entity.enums.Users;
-import com.example.springdata.entity.service.UsersService;
 import com.example.springdata.entity.service.impl.ParametrsService;
 import com.example.springdata.entity.service.impl.UsersServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +24,6 @@ public class ParametrsController {
 
     @GetMapping("/parametrs/{id}/last")
     Parametrs getLast(@PathVariable long id){
-        System.out.println(id);
         return service.getLastParametrs(id);}
 
 

@@ -45,4 +45,11 @@ public class DaillyMenu {
     }
 
 
+    public Collection<Meal> getMeals() {
+        return meals;
+    }
+
+    public void setMeals(Collection<Meal> meals) {
+        this.meals = meals;
+    }
 }

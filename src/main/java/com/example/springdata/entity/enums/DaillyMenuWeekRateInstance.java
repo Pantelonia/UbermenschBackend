@@ -22,10 +22,12 @@ public class DaillyMenuWeekRateInstance {
     @JoinColumn(name = "week_id", referencedColumnName = "id", nullable = false, updatable = false)
     private WeeklyDiet week;
 
-    @Basic
-    @Column(name = "number", unique = true)
-    private int number;
 
+
+
+ public DaillyMenuWeekRateInstance(){
+
+}
 
 
 
@@ -54,4 +56,6 @@ public class DaillyMenuWeekRateInstance {
     public void setWeek(WeeklyDiet week) {
         this.week = week;
     }
+
+
 }

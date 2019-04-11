@@ -1,0 +1,9 @@
+package com.example.springdata.entity.repository;
+
+import com.example.springdata.entity.enums.CollectMeal;
+import com.example.springdata.entity.enums.Meal;
+import org.springframework.data.repository.CrudRepository;
+
+public interface CollectMealRepository extends CrudRepository<CollectMeal, Long> {
+    Iterable<CollectMeal> findAllByMeal(Meal meal);
+}

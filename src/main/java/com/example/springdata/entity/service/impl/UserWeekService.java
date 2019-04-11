@@ -1,6 +1,5 @@
 package com.example.springdata.entity.service.impl;
 
-import com.example.springdata.entity.enums.DaillyMenu;
 import com.example.springdata.entity.enums.UserWeekInstance;
 import com.example.springdata.entity.enums.Users;
 import com.example.springdata.entity.enums.WeeklyDiet;
@@ -32,6 +31,12 @@ public class UserWeekService {
         }
         return programms;
 
+    }
+
+    public UserWeekInstance getUserWeek(Long id_user, long id_week){
+        Users users = usersRepository.findById(id_user).get();
+        WeeklyDiet weeklyDiet = weeklyDietRepository.findById(id_week).get();
+        return userWeekRepository.findByUserAndWeek(users,weeklyDiet);
     }
 
     public UserWeekInstance addUserWeekInstance(UserWeekInstance userWeekInstance){

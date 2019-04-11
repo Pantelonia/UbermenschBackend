@@ -7,8 +7,6 @@ import com.example.springdata.entity.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class UsersServiceImpl {
     @Autowired
@@ -36,7 +34,7 @@ public class UsersServiceImpl {
         return usersRepository.findByLogin(login);
     }
 
-    public  Users getByEmail(String email) { return  usersRepository.findByEmail(email);}
+    public Users getByEmail(String email) { return  usersRepository.findByEmail(email);}
 
 
     public Users changeEmail(long id, String email) {

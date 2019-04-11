@@ -48,4 +48,20 @@ public class Meal
     public void setName(String name) {
         this.name = name;
     }
+
+    public DaillyMenu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(DaillyMenu menu) {
+        this.menu = menu;
+    }
+
+    public Collection<CollectMeal> getCollectMeals() {
+        return collectMeals;
+    }
+
+    public void setCollectMeals(Collection<CollectMeal> collectMeals) {
+        this.collectMeals = collectMeals;
+    }
 }
