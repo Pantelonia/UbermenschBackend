@@ -33,4 +33,10 @@ public class CollectMealController {
 
         return collectMealService.addCollectMeal(collectMeal);
     }
+
+    @GetMapping("/MyMeal/check/{meal_id}/{dish_id}")
+    CollectMeal getCollectMeal(@PathVariable long meal_id, @PathVariable long dish_id){
+        return  collectMealService.getCollectMeal(meal_id, dish_id);
+    }
+
 }
